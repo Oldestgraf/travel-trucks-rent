@@ -1,0 +1,46 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: #101828;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.details li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
