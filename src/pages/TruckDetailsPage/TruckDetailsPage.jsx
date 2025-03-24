@@ -2,78 +2,101 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./TruckDetailsPage.module.css";
-import Features from "../../components/Features/Features"
-import Reviews from "../../components/Reviews/Reviews"
+import Features from "../../components/Features/Features";
+import Reviews from "../../components/Reviews/Reviews";
+import BookingForm from "../../components/BookingForm/BookingForm";
 
 const TruckDetailsPage = () => {
-    const { id } = useParams();
-    const [camper, setCamper] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [activeTab, setActiveTab] = useState("features");
+  const { id } = useParams();
+  const [camper, setCamper] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState("features");
 
-    useEffect(() => {
-        const fetchCamperDetails = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get(`https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers/${id}`);
-                setCamper(response.data);
-            } catch (error) {
-                setError({ error });
-            } finally {
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    const fetchCamperDetails = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers/${id}`);
+        setCamper(response.data);
+      } catch (error) {
+        setError(error.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCamperDetails();
+  }, [id]);
 
-        fetchCamperDetails();
-    }, [id]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (!camper) return null;
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p style={{ color: "red" }}>{error}</p>
-    if (!camper) return null;
+  return (
+    <div className={styles.container}>
+      <div className={styles.top}>
+        <h1 className={styles.name}>{camper.name}</h1>
 
-    return (
-        <div>
-            <h1>{camper.name}</h1>
-            <p>⭐ {camper.rating} ({camper.reviews.length} Reviews) | 📍 {camper.location}</p>
-            <p><strong>Ціна:</strong> €{camper.price.toLocaleString("de-DE")}</p>
-
-            {/* Gallery */}
-            <div>
-                {camper.gallery.map((image, index) => (
-                    <img key={index} src={image.thumb} alt={`Camper ${index + 1}`} width="292" />
-                ))}
+        <div className={styles.meta}>
+          <div className={styles.rating}>
+            <svg width={16} height={16}>
+              <use xlinkHref="/sprite.svg#icon-star-gold" />
+            </svg>
+            <div className={styles.ratingText}>
+              {camper.rating.toFixed(1)} ({camper.reviews.length} Reviews)
             </div>
-
-            <p className={styles.description}>{camper.description}</p>
-
-            <div className={styles.tabs}>
-                <button
-                    className={activeTab === 'features' ? styles.activeTab : ''}
-                    onClick={() => setActiveTab('features')}
-                >
-                    Features
-                </button>
-                <button
-                    className={activeTab === 'reviews' ? styles.activeTab : ''}
-                    onClick={() => setActiveTab('reviews')}
-                >
-                    Reviews
-                </button>
-            </div>
-
-            <div className={styles.tabContent}>
-                {activeTab === 'features' && <Features camper={camper} />}
-                {activeTab === 'reviews' && <Reviews reviews={camper.reviews} />}
-            </div>
-            
-            <div className={styles.bookingCard}>
-                <div className={styles.price}>€{camper.price} / day</div>
-                <button className={styles.bookingBtn}>Book now</button>
-            </div>
-
+          </div>
+          <div className={styles.location}>
+            <svg width={16} height={16}>
+              <use xlinkHref="/sprite.svg#icon-map" />
+            </svg>
+            {camper.location}
+          </div>
         </div>
-    );
+
+        <div className={styles.price}>€{camper.price.toLocaleString('en')}.00</div>
+
+        <div className={styles.gallery}>
+          {camper.gallery.map((img, idx) => (
+            <img 
+            key={idx} 
+            src={img.thumb} 
+            alt={`Gallery ${idx + 1}`} />
+          ))}
+        </div>
+
+        <p className={styles.description}>{camper.description}</p>
+
+        <div className={styles.tabs}>
+          <button
+            className={`${styles.tab} ${activeTab === "features" ? styles.active : ""}`}
+            onClick={() => setActiveTab("features")}
+          >
+            Features
+          </button>
+          <button
+            className={`${styles.tab} ${activeTab === "reviews" ? styles.active : ""}`}
+            onClick={() => setActiveTab("reviews")}
+          >
+            Reviews
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.bottom}>
+        <div className={styles.left}>
+          {activeTab === "features" ? (
+            <Features camper={camper} />
+          ) : (
+            <Reviews reviews={camper.reviews} />
+          )}
+        </div>
+        <div className={styles.right}>
+          <BookingForm camper={camper} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default TruckDetailsPage;

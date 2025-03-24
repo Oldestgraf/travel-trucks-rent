@@ -12,7 +12,7 @@ const Navigation = () => {
             <nav className={styles.nav}>
                 <div className={styles.logoWrapper}>
                     <svg className={styles.logo}>
-                        <use href="/sprite.svg#logo" />
+                        <use xlinkHref="/sprite.svg#logo" />
                     </svg>
                 </div>
                 <div className={styles.links}>

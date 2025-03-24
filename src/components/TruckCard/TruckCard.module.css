@@ -1,0 +1,143 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    border-radius: 20px;
+    border: 1px solid var(--gray-light);
+    background: var(--white);
+    padding: 24px;
+  }
+  
+  .image {
+    width: 290px;
+    height: 310px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .titleBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--main-dark);
+    margin: 0;
+  }
+
+  .metaRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .rating,
+  .location {
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ratingText {
+    border-bottom: 1px solid var(--main-dark);
+  }
+  
+  .icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
+
+  .priceRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .priceBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  
+  .price {
+    font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 133.333% */
+    color: var(--main-dark);
+  }
+  
+  .favoriteBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .favoriteBtn:hover svg {
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+  
+  .description {
+    font-size: 14px;
+    color: var(--text);
+    margin: 14px 0;
+  }
+  
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .badge {
+    background-color: var(--badges);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    color: var(--main-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .buttonWrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  

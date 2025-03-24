@@ -8,4 +8,6 @@ const navigationSlice = createSlice({
             state.activePage = action.payload
         }
     }
-})
+});
+
+export default navigationSlice.reducer;

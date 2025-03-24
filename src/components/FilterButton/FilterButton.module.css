@@ -1,0 +1,37 @@
+.filterButton {
+    width: 112px;
+    height: 96px;
+    border: 1px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 16px 40px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  
+  .filterButton:hover {
+    border-color: var(--red-hover);
+  }
+  
+  .active {
+    border-color: var(--red);
+  }
+  
+  .icon {
+    display: block;
+    fill: var(--main-dark);
+  }
+  
+  .iconWrapper {
+    margin-bottom: 4px;
+  }
+  
+  .label {
+    font-size: 14px;
+    text-align: center;
+  }

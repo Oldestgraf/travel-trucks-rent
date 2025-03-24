@@ -2,8 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 16px 64px;
+  border-bottom: 1px solid var(--badges);
+  background: var(--inputs);
 }
 
 .nav {
@@ -20,6 +21,8 @@
 .logo {
     display: flex;
     justify-content: center;
+    width: 136px;
+    height: 16px;
 }
 
 .links {

@@ -1,0 +1,115 @@
+.container {
+    display: flex;
+    gap: 64px;
+    padding: 16px 64px;
+  }
+
+  .filters {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .locationTitle {
+    margin-top: 32px;
+    color: var(--gray);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  .input {
+    height: 56px;
+    background: var(--inputs);
+    border-radius: 12px;
+    width: 100%;
+    padding: 18px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  .filtersTitle {
+    margin-top: 40px;
+    color: var(--text);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  .filterTitle {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--gray-light);
+    color: var(--main-dark);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-top: 32px;
+  }
+  
+  .filterGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  
+  .results {
+    padding-top: 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+
+  .loadMoreWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0 36px;
+  }
+  .searchButton {
+    width: 166px;
+    margin-top: 40px;
+    padding: 16px 60px;
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.08px;
+    border: none;
+    border-radius: 200px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .searchButton:hover {
+    background-color: var(--red-hover);
+  }
+
+  .loadMoreButton {
+    padding: 16px 60px;
+    background-color: var(--white);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.08px;
+    border: 1px solid var(--gray-light);
+    border-radius: 200px;
+    text-decoration: none;
+    display: inline-block;
+    transition: border 0.3s ease;
+  }
+
+  .loadMoreButton:hover {
+    border: 1px solid var(--red-hover);
+  }
