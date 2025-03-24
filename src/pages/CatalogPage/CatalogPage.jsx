@@ -20,7 +20,7 @@ const equipmentOptions = [
 ];
 
 const vehicleOptions = [
-  { icon: 'icon-grid-big', label: 'Van', key: 'Van' },
+  { icon: 'icon-grid-big', label: 'Van', key: 'panelTruck' },
   { icon: 'icon-grid', label: 'Fully Integrated', key: 'fullyIntegrated' },
   { icon: 'icon-grid-small', label: 'Alcove', key: 'alcove' },
 ];
@@ -64,7 +64,12 @@ const CatalogPage = () => {
 
     if (selectedEquipment.length > 0) {
       result = result.filter((camper) =>
-        selectedEquipment.every((key) => camper[key])
+        selectedEquipment.every((key) => {
+          if (key === 'automatic') {
+            return camper.transmission === 'automatic';
+          }
+          return camper[key];
+        })
       );
     }
 
